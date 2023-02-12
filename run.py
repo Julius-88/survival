@@ -143,7 +143,7 @@ def stairs_down():
         if action == 'a':
             sneak()
         elif action == 'b':
-            print('run')
+            run()
         elif action == 'c':
             print('attack')
         else:
@@ -166,6 +166,20 @@ def sneak():
           'Congratulations you survived chapter one! ')
 
 
+def run():
+    """
+    If the user pressed "b" to run in stairs_down
+    they will be brought here.
+    """
+    print('As you sprint towards the exit '
+          'you slip on a pool of blood '
+          'and fall on your back hitting your head. '
+          'As you try to collect yourself, your vision returns '
+          'to normal only in time to see one of the zombies '
+          'quickly approaching your face with an open maw. '
+          'You have died! GAME OVER! ')
+
+
 def stairs_up():
     """
     If the user pressed "b" to go up the stairs in stairs
@@ -181,7 +195,7 @@ def stairs_up():
     print('All you can do is hold the opposite end of the door. '
           'The zombies overpower you and you have nowhere to go. '
           'You decide its better to jump to your death than to be '
-          'eaten alive. You have died! ')
+          'eaten alive. You have died! GAME OVER! ')
     name()
     choice()
 
