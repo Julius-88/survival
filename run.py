@@ -2,6 +2,7 @@
 This is a survival game taking place in a zombie outbreak
 YOU MUST SURVIVE!
 """
+weapons = []
 
 
 def choice():
@@ -33,7 +34,7 @@ def choice_a():
           'You suddenly realize it might be a good idea to have some '
           'protection. Will you look for a weapon before you leave?')
 
-    action = input('Press "a" to look for a weapon or "b" to leave ')
+    action = input('Press "a" to look for a weapon or "b" to leave: ')
     if action != ' ':
         if action == 'a':
             weapon()
@@ -57,7 +58,7 @@ def weapon():
           'You dont have any way of putting the knife securly on you '
           'and so you must make a choice. ')
 
-    action = input('Press "a" if you take the knife or "b" to take the bat ')
+    action = input('Press "a" if you take the knife or "b" to take the bat: ')
     if action != ' ':
         if action == 'a':
             print('knife')
@@ -82,7 +83,7 @@ def leave():
           'You look around and see blood and body parts everywhere '
           'But no zombies! You wonder which is the safest route to take ')
 
-    action = input('Press "a" to take the stairs or "b" to take the elevator ')
+    action = input('Press "a" to take the stairs or "b" to take the elevator: ')
     if action != ' ':
         if action == 'a':
             stairs()
@@ -108,12 +109,12 @@ def stairs():
     action = input('Press "a" to continue down. '
                    '"b" to go upstairs. '
                    '"c" to go back to your apartment. '
-                   '"d" to take the elevator ')
+                   '"d" to take the elevator: ')
     if action != ' ':
         if action == 'a':
             print('down')
         elif action == 'b':
-            print('up')
+            stairs_up()
         elif action == 'c':
             choice_b()
         elif action == 'd':
@@ -124,6 +125,26 @@ def stairs():
     else:
         print('invalid choice, try again')
         stairs()
+
+
+def stairs_up():
+    """
+    If the user pressed "b" to go up the stairs in stairs
+    they will be brought here.
+    """
+    print('You decide to take your chances going up the stairs. '
+          'As you are going up past the floors above you '
+          'zombies hear your steps and start coming after you. '
+          'Panicked you go as fast as you can and eventually reach the '
+          'doors going to the roof terrace. '
+          'You close the door behind you but there is no locking mechanism. ')
+
+    print('All you can do is hold the opposite end of the door. '
+          'The zombies overpower you and you have nowhere to go. '
+          'You decide its better to jump to your death than to be '
+          'eaten alive. You have died! ')
+    name()
+    choice()
 
 
 def elevator():
@@ -156,7 +177,8 @@ def choice_b():
           'You can turn on the tv to see the news '
           'or you could look at your phone to see if anyone has called you.')
 
-    action = input('Press "a" to turn on the tv or "b" to look at your phone ')
+    action = input('Press "a" to turn on the tv or "b" to look at your phone: '
+                   '')
     if action != ' ':
         if action == 'a':
             print('tv')
@@ -174,7 +196,7 @@ def name():
     """
     checks to see if player has entered a name
     """
-    player_name = input('What is your name player? ').strip()
+    player_name = input('What is your name player?: ').strip()
     if not player_name and player_name != ' ':
         print('Please enter a name')
         name()
