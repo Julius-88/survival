@@ -3,7 +3,7 @@ This is a survival game
 """
 
 
-def choice_a():
+def choice():
     """
     Presents user with their first choice of leaving the apartment or staying.
     If they press a they will leave apartment, if they press b they will stay.
@@ -11,9 +11,29 @@ def choice_a():
     action = input('Press "a" to leave your apartment, or "b" to stay: ')
     if action != ' ':
         if action == 'a':
-            print('a')
+            choice_a()
         elif action == 'b':
             print('b')
+        else:
+            print('invalid choice, try again')
+            choice()
+    else:
+        print('invalid choice, try again')
+        choice()
+
+
+def choice_a():
+    """
+    If the user pressed "a" on choice they will be brought here.
+    """
+    print('You have chosen to leave your apartment.')
+    print('Will you look for a weapon before you leave?')
+    action = input('Press "a" to look for a weapon, or "b" to leave ')
+    if action != ' ':
+        if action == 'a':
+            print('weapon')
+        elif action == 'b':
+            print('leave')
         else:
             print('invalid choice, try again')
             choice_a()
@@ -39,4 +59,4 @@ def name():
 name()
 
 
-choice_a()
+choice()
