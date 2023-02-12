@@ -85,7 +85,7 @@ def leave():
     action = input('Press "a" to take the stairs or "b" to take the elevator ')
     if action != ' ':
         if action == 'a':
-            print('stairs')
+            stairs()
         elif action == 'b':
             print('elevator')
         else:
@@ -94,6 +94,33 @@ def leave():
     else:
         print('invalid choice, try again')
         leave()
+
+
+def stairs():
+    """
+    If the user pressed "a" to take stairs in leave
+    they will be brought here.
+    """
+    print('You decide to take the stairs. '
+          'As you are running down you can hear strange growling '
+          'from downstairs. ')
+
+    action = input('Press "a" to continue down or "b" to go upstairs '
+                   'or "c" to go back to your apartment ')
+    if action != ' ':
+        if action == 'a':
+            print('down')
+        elif action == 'b':
+            print('up')
+        elif action == 'c':
+            print('You chose to go back to your apartment until its safer')
+            choice_b()
+        else:
+            print('invalid choice, try again')
+            stairs()
+    else:
+        print('invalid choice, try again')
+        stairs()
 
 
 def choice_b():
