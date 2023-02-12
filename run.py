@@ -1,5 +1,6 @@
 """
-This is a survival game
+This is a survival game taking place in a zombie outbreak
+YOU MUST SURVIVE!
 """
 
 
@@ -32,10 +33,10 @@ def choice_a():
           'You suddenly realize it might be a good idea to have some '
           'protection. Will you look for a weapon before you leave?')
 
-    action = input('Press "a" to look for a weapon, or "b" to leave ')
+    action = input('Press "a" to look for a weapon or "b" to leave ')
     if action != ' ':
         if action == 'a':
-            print('weapon')
+            weapon()
         elif action == 'b':
             print('leave')
         else:
@@ -44,6 +45,30 @@ def choice_a():
     else:
         print('invalid choice, try again')
         choice_a()
+
+
+def weapon():
+    """
+    If the user pressed "a" to look for a weapon on choice_a
+    they will be brought here.
+    """
+    print('You ransack your apartment but all you can find are kitchen knives '
+          'and an old baseball bat. '
+          'You dont have any way of putting the knife securly on you '
+          'and so you must make a choice. ')
+
+    action = input('Press "a" if you take the knife or "b" to take the bat ')
+    if action != ' ':
+        if action == 'a':
+            print('knife')
+        elif action == 'b':
+            print('bat')
+        else:
+            print('invalid choice, try again')
+            weapon()
+    else:
+        print('invalid choice, try again')
+        weapon()
 
 
 def choice_b():
