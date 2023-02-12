@@ -87,7 +87,7 @@ def leave():
         if action == 'a':
             stairs()
         elif action == 'b':
-            print('elevator')
+            elevator()
         else:
             print('invalid choice, try again')
             leave()
@@ -105,22 +105,42 @@ def stairs():
           'As you are running down you can hear strange growling '
           'from downstairs. ')
 
-    action = input('Press "a" to continue down or "b" to go upstairs '
-                   'or "c" to go back to your apartment ')
+    action = input('Press "a" to continue down. '
+                   '"b" to go upstairs. '
+                   '"c" to go back to your apartment. '
+                   '"d" to take the elevator ')
     if action != ' ':
         if action == 'a':
             print('down')
         elif action == 'b':
             print('up')
         elif action == 'c':
-            print('You chose to go back to your apartment until its safer')
             choice_b()
+        elif action == 'd':
+            elevator()
         else:
             print('invalid choice, try again')
             stairs()
     else:
         print('invalid choice, try again')
         stairs()
+
+
+def elevator():
+    """
+    If the user pressed "b" to take the elevator in leave
+    or "d" in stairs they will be brought here.
+    """
+    print('You decide to take the elevator and continuously '
+          'press the button to make it come faster as you '
+          'look around for any danger. '
+          'As the familiar sound plings you look infront of '
+          'you only to find to your horror several zombies '
+          'inside! They grab you before you can react and since you '
+          'dont have any weapon on you, you cannot defend yourself. '
+          'You have been eaten! GAME OVER!')
+    name()
+    choice()
 
 
 def choice_b():
