@@ -38,7 +38,7 @@ def choice_a():
         if action == 'a':
             weapon()
         elif action == 'b':
-            print('leave')
+            leave()
         else:
             print('invalid choice, try again')
             choice_a()
@@ -69,6 +69,31 @@ def weapon():
     else:
         print('invalid choice, try again')
         weapon()
+
+
+def leave():
+    """
+    If the user pressed "b" to leave apartment in choice_a
+    they will be brought here.
+    """
+    print('You decide that you have no time to waste. '
+          'As you open the door to the hallway, you can hear screams and car '
+          'alarms trying to compete for your attention. '
+          'You look around and see blood and body parts everywhere '
+          'But no zombies! You wonder which is the safest route to take ')
+
+    action = input('Press "a" to take the stairs or "b" to take the elevator ')
+    if action != ' ':
+        if action == 'a':
+            print('stairs')
+        elif action == 'b':
+            print('elevator')
+        else:
+            print('invalid choice, try again')
+            leave()
+    else:
+        print('invalid choice, try again')
+        leave()
 
 
 def choice_b():
