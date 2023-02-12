@@ -141,7 +141,7 @@ def stairs_down():
                    '"c" to attack them: ')
     if action != ' ':
         if action == 'a':
-            print('sneak')
+            sneak()
         elif action == 'b':
             print('run')
         elif action == 'c':
@@ -152,6 +152,18 @@ def stairs_down():
     else:
         print('invalid choice, try again')
         stairs_down()
+
+
+def sneak():
+    """
+    If the user pressed "a" to sneak in stairs_down
+    they will be brought here.
+    """
+    print('You successfully sneak past the zombies and avoid '
+          'stepping into any pool of blood. As you open the door '
+          'you are greeted by a city in complete chaos. '
+          'You know the odds are against you but atleast you got a chance! '
+          'Congratulations you survived chapter one! ')
 
 
 def stairs_up():
