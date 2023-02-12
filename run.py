@@ -81,9 +81,10 @@ def leave():
           'As you open the door to the hallway, you can hear screams and car '
           'alarms trying to compete for your attention. '
           'You look around and see blood and body parts everywhere '
-          'But no zombies! You wonder which is the safest route to take ')
+          'But no zombies! You wonder which is the safest route to take. ')
 
-    action = input('Press "a" to take the stairs or "b" to take the elevator: ')
+    action = input('Press "a" to take the stairs or "b" to take the elevator: '
+                   '')
     if action != ' ':
         if action == 'a':
             stairs()
@@ -112,7 +113,7 @@ def stairs():
                    '"d" to take the elevator: ')
     if action != ' ':
         if action == 'a':
-            print('down')
+            stairs_down()
         elif action == 'b':
             stairs_up()
         elif action == 'c':
@@ -125,6 +126,32 @@ def stairs():
     else:
         print('invalid choice, try again')
         stairs()
+
+
+def stairs_down():
+    """
+    If the user pressed "a" to take stairs down in stairs
+    they will be brought here.
+    """
+    print('As you continue down the stairs you see two zombies '
+          'eating someone right next to the door to the exit. ')
+
+    action = input('Press "a" to try and sneak past them '
+                   '"b" to run past them '
+                   '"c" to attack them: ')
+    if action != ' ':
+        if action == 'a':
+            print('sneak')
+        elif action == 'b':
+            print('run')
+        elif action == 'c':
+            print('attack')
+        else:
+            print('invalid choice, try again')
+            stairs_down()
+    else:
+        print('invalid choice, try again')
+        stairs_down()
 
 
 def stairs_up():
