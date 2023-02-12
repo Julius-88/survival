@@ -145,7 +145,7 @@ def stairs_down():
         elif action == 'b':
             run()
         elif action == 'c':
-            print('attack')
+            attack()
         else:
             print('invalid choice, try again')
             stairs_down()
@@ -177,6 +177,16 @@ def run():
           'As you try to collect yourself, your vision returns '
           'to normal only in time to see one of the zombies '
           'quickly approaching your face with an open maw. '
+          'You have died! GAME OVER! ')
+
+
+def attack():
+    """
+    If the user pressed "c" to attack them in stairs_down
+    they will be brought here.
+    """
+    print('You engange the zombies in hand to hand combat '
+          'it is a futile attempt as they quickly start biting you. '
           'You have died! GAME OVER! ')
 
 
