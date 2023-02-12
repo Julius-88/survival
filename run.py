@@ -3,6 +3,7 @@ This is a survival game taking place in a zombie outbreak
 YOU MUST SURVIVE!
 """
 weapons = []
+knowledge = []
 
 
 def choice():
@@ -61,7 +62,8 @@ def weapon():
     action = input('Press "a" if you take the knife or "b" to take the bat: ')
     if action != ' ':
         if action == 'a':
-            print('knife')
+            weapons.append('knife')
+            knife()
         elif action == 'b':
             print('bat')
         else:
@@ -70,6 +72,16 @@ def weapon():
     else:
         print('invalid choice, try again')
         weapon()
+
+
+def knife():
+    """
+    If the user pressed "a" to take knife in weapon
+    they will be brought here.
+    """
+    print('Armed with the biggest knife you could find '
+          'you are ready to face what is outside. ')
+    leave()
 
 
 def leave():
@@ -103,9 +115,8 @@ def stairs():
     If the user pressed "a" to take stairs in leave
     they will be brought here.
     """
-    print('You decide to take the stairs. '
-          'As you are running down you can hear strange growling '
-          'from downstairs. ')
+    print('As you are running down the stairs you can hear strange growling '
+          'from the bottom ')
 
     action = input('Press "a" to continue down. '
                    '"b" to go upstairs. '
@@ -178,6 +189,8 @@ def run():
           'to normal only in time to see one of the zombies '
           'quickly approaching your face with an open maw. '
           'You have died! GAME OVER! ')
+    name()
+    choice()
 
 
 def attack():
@@ -185,9 +198,27 @@ def attack():
     If the user pressed "c" to attack them in stairs_down
     they will be brought here.
     """
-    print('You engange the zombies in hand to hand combat '
-          'it is a futile attempt as they quickly start biting you. '
-          'You have died! GAME OVER! ')
+    if 'knife' in weapons:
+        weapons.pop()
+        print('You pull out your knife and stab the closest zombie. '
+              'It does not seem to affect them. '
+              'They both rise up and start attacking you as you '
+              'repeatedly stab them, fighting for your life. '
+              'They overwhelm you. You have died! GAME OVER! ')
+    elif 'knife' in weapons and 'tv' in knowledge:
+        print('As you approach the zombies you remember what you '
+              'heard in the news and aim for the first zombies '
+              'head. Killing it in one blow! You quickly pull out '
+              'your knife and stab the other one right through its eyes. '
+              'Standing in disbelief of what you have done, you feel '
+              'that you are now ready to face the grim reality of the world. '
+              'Congratulations you survived chapter one! ')
+    else:
+        print('You engange the zombies in hand to hand combat '
+              'it is a futile attempt as they quickly start biting you. '
+              'You have died! GAME OVER! ')
+        name()
+        choice()
 
 
 def stairs_up():
@@ -220,8 +251,7 @@ def elevator():
           'look around for any danger. '
           'As the familiar sound plings you look infront of '
           'you only to find to your horror several zombies '
-          'inside! They grab you before you can react and since you '
-          'dont have any weapon on you, you cannot defend yourself. '
+          'inside! They grab you before you can react '
           'You have been eaten! GAME OVER!')
     name()
     choice()
