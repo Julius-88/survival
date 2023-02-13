@@ -7,12 +7,26 @@ knowledge = []
 bag = []
 
 
+def border():
+    """
+    Creates a border of * so it is easier to see the game text.
+    """
+    print('\n')
+    print('*' * 20)
+    print('\n')
+
+
 def choice():
     """
     Presents user with their first choice of leaving the apartment or staying.
     If they press "a" they will leave apartment, if they press "b"
     they will stay.
     """
+    weapons.clear()
+    knowledge.clear()
+    bag.clear()
+
+    border()
     action = input('Press "a" to leave your apartment or "b" to stay: ')
     if action != ' ':
         if action == 'a':
@@ -32,10 +46,11 @@ def choice_a():
     If the user pressed "a" to leave apartment on choice they will be brought
     here.
     """
+    border()
     print('Filled with adrenaline you have chosen to leave your apartment. '
           'You suddenly realize it might be a good idea to have some '
           'protection. Will you look for a weapon before you leave?')
-
+    border()
     action = input('Press "a" to look for a weapon or "b" to leave: ')
     if action != ' ':
         if action == 'a':
@@ -55,18 +70,18 @@ def weapon():
     If the user pressed "a" to look for a weapon on choice_a
     they will be brought here.
     """
+    border()
     print('You ransack your apartment but all you can find are kitchen knives '
           'and an old baseball bat. '
           'You dont have any way of putting the knife securly on you '
           'and so you must make a choice. ')
+    border()
 
     action = input('Press "a" if you take the knife or "b" to take the bat: ')
     if action != ' ':
         if action == 'a':
-            weapons.append('knife')
             knife()
         elif action == 'b':
-            weapons.append('bat')
             bat()
         else:
             print('invalid choice, try again')
@@ -81,8 +96,11 @@ def knife():
     If the user pressed "a" to take knife in weapon
     they will be brought here.
     """
+    weapons.append('knife')
+    border()
     print('Armed with the biggest knife you could find '
           'you are ready to face what is outside. ')
+    border()
     leave()
 
 
@@ -91,8 +109,11 @@ def bat():
     If the user pressed "b" to take baseball bat in weapon
     they will be brought here.
     """
+    weapons.append('bat')
+    border()
     print('Armed with your trusty bat '
           'you are ready to face what is outside. ')
+    border()
     leave()
 
 
@@ -101,11 +122,13 @@ def leave():
     If the user pressed "b" to leave apartment in choice_a
     they will be brought here.
     """
+    border()
     print('You decide that you have no time to waste. '
           'As you open the door to the hallway, you can hear screams and car '
-          'alarms trying to compete for your attention. '
+          'alarms trying to compete for your attention.\n '
           'You look around and see blood and body parts everywhere '
           'But no zombies! You wonder which is the safest route to take. ')
+    border()
 
     action = input('Press "a" to take the stairs or "b" to take the elevator: '
                    '')
@@ -127,8 +150,10 @@ def stairs():
     If the user pressed "a" to take stairs in leave
     they will be brought here.
     """
+    border()
     print('As you are running down the stairs you can hear strange growling '
           'from the bottom ')
+    border()
 
     action = input('Press "a" to continue down. '
                    '"b" to go upstairs. '
@@ -156,8 +181,10 @@ def stairs_down():
     If the user pressed "a" to take stairs down in stairs
     they will be brought here.
     """
+    border()
     print('As you continue down the stairs you see two zombies '
           'eating someone right next to the door to the exit. ')
+    border()
 
     action = input('Press "a" to try and sneak past them '
                    '"b" to run past them '
@@ -182,11 +209,13 @@ def sneak():
     If the user pressed "a" to sneak in stairs_down
     they will be brought here.
     """
+    border()
     print('You successfully sneak past the zombies and avoid '
           'stepping into any pool of blood. As you open the door '
           'you are greeted by a city in complete chaos. '
           'You know the odds are against you but atleast you got a chance! '
           'Congratulations you survived chapter one! ')
+    border()
 
 
 def run():
@@ -194,6 +223,7 @@ def run():
     If the user pressed "b" to run in stairs_down
     they will be brought here.
     """
+    border()
     print('As you sprint towards the exit '
           'you slip on a pool of blood '
           'and fall on your back hitting your head. '
@@ -201,6 +231,7 @@ def run():
           'to normal only in time to see one of the zombies '
           'quickly approaching your face with an open maw. '
           'You have died! GAME OVER! ')
+    border()
     name()
     choice()
 
@@ -210,14 +241,8 @@ def attack():
     If the user pressed "c" to attack them in stairs_down
     they will be brought here.
     """
-    if 'knife' in weapons:
-        weapons.pop()
-        print('You pull out your knife and stab the closest zombie. '
-              'It does not seem to affect them. '
-              'They both rise up and start attacking you as you '
-              'repeatedly stab them, fighting for your life. '
-              'They overwhelm you. You have died! GAME OVER! ')
-    elif 'knife' in weapons and 'tv' in knowledge:
+    if 'knife' in weapons and 'kill' in knowledge:
+        border()
         print('As you approach the zombies you remember what you '
               'heard in the news and aim for the first zombies '
               'head. Killing it in one blow! You quickly pull out '
@@ -225,8 +250,36 @@ def attack():
               'Standing in disbelief of what you have done, you feel '
               'that you are now ready to face the grim reality of the world. '
               'Congratulations you survived chapter one! ')
+        border()
+    elif 'bat' in weapons and 'kill' in knowledge:
+        border()
+        print('As you prepare to attack the zombies you '
+              'remember what they said on the news. '
+              'You yell at the zombies and start to approach you. '
+              'As the first one comes close enough you aim for the head. '
+              'A loud cracking sound comes from the zombie as it falls down. '
+              'You quickly move towards the other one and hit it on its head. '
+              'It too falls down and you start to repeatedly bash its head '
+              'until it is cracked. You then move to the first zombie to '
+              'finish the job. '
+              'You take a deep breath, covered in blood and knowledge '
+              'you are ready to face what awaits you outside. '
+              'Congratulations you survived chapter one! ')
+        border()
+    elif 'knife' in weapons:
+        weapons.pop()
+        border()
+        print('You pull out your knife and stab the closest zombie. '
+              'It does not seem to affect them. '
+              'They both rise up and start attacking you as you '
+              'repeatedly stab them, fighting for your life. '
+              'They overwhelm you. You have died! GAME OVER! ')
+        border()
+        name()
+        choice()
     elif 'bat' in weapons:
         weapons.pop()
+        border()
         print('You ready your bat and yell at the zombies. '
               'They rise up and start approaching you. '
               'You swing your bat at the closest one hitting its jaw. '
@@ -240,25 +293,15 @@ def attack():
               'off of you, the other zombie has closed in on you '
               'and starts to eat your arm. '
               'You have died! GAME OVER! ')
+        border()
         name()
         choice()
-    elif 'bat' in weapons and 'tv' in knowledge:
-        print('As you prepare to attack the zombies you'
-              'remember what they said on the news. '
-              'You yell at the zombies and start to approach you. '
-              'As the first one comes close enough you aim for the head. '
-              'A loud cracking sound comes from the zombie as it falls down. '
-              'You quickly move towards the other one and hit it on its head. '
-              'It too falls down and you start to repeatedly bash its head '
-              'until it is cracked. You then move to the first zombie to '
-              'finish the job. '
-              'You take a deep breath, covered in blood and knowledge '
-              'you are ready to face what awaits you outside. '
-              'Congratulations you survived chapter one! ')
     else:
+        border()
         print('You engange the zombies in hand to hand combat '
               'it is a futile attempt as they quickly start biting you. '
               'You have died! GAME OVER! ')
+        border()
         name()
         choice()
 
@@ -268,35 +311,43 @@ def stairs_up():
     If the user pressed "b" to go up the stairs in stairs
     they will be brought here.
     """
+    border()
     print('You decide to take your chances going up the stairs. '
           'As you are going up past the floors above you '
           'zombies hear your steps and start coming after you. '
           'Panicked you go as fast as you can and eventually reach the '
           'doors going to the roof terrace. '
           'You close the door behind you but there is no locking mechanism. ')
+    border()
     if 'bat' in weapons:
         weapons.pop()
+        border()
         print('You quickly use your bat and put it in the door handle '
               'thus preventing it from being open. '
               'You are now trapped on the roof, with no supplies '
               'or a way out. You starve to death. '
               'You have died! GAME OVER! ')
+        border()
         name()
         choice()
     elif 'bat' in weapons and 'supplies' in bag:
         weapons.pop()
         bag.pop()
+        border()
         print('You quickly use your bat and put it in the door handle '
               'thus preventing it from being open. '
               'With no way out you have no choice but to wait '
               'for rescue. You ration your supplies and '
               'manage to live long enough for a helicopter to spot you. '
               'Congratulations you survived chapter one! ')
+        border()
     else:
+        border()
         print('All you can do is hold the opposite end of the door. '
               'The zombies overpower you and you have nowhere to go. '
               'You decide its better to jump to your death than to be '
               'eaten alive. You have died! GAME OVER! ')
+        border()
         name()
         choice()
 
@@ -306,6 +357,7 @@ def elevator():
     If the user pressed "b" to take the elevator in leave
     or "d" in stairs they will be brought here.
     """
+    border()
     print('You decide to take the elevator and continuously '
           'press the button to make it come faster as you '
           'look around for any danger. '
@@ -313,6 +365,7 @@ def elevator():
           'you only to find to your horror several zombies '
           'inside! They grab you before you can react '
           'You have been eaten! GAME OVER!')
+    border()
     name()
     choice()
 
@@ -321,18 +374,19 @@ def choice_b():
     """
     If the user pressed "b" to stay on choice they will be brought here.
     """
+    border()
     print('You have chosen to stay in your apartment. '
           'You can turn on the tv to see the news '
           'or you could look at your phone to see if anyone has called you.')
+    border()
 
     action = input('Press "a" to turn on the tv or "b" to look at your phone: '
                    '')
     if action != ' ':
         if action == 'a':
-            knowledge.append('kill')
             watch_tv()
         elif action == 'b':
-            print('phone')
+            watch_phone()
         else:
             print('invalid choice, try again')
             choice_b()
@@ -341,11 +395,53 @@ def choice_b():
         choice_b()
 
 
+def watch_phone():
+    """
+    If the user pressed "b" to watch phone on choice_b
+    they will be brought here.
+    """
+    border()
+    print('You open your phone and see that you have several missed calls '
+          'and voice messages from family and friends. '
+          'You try to call them back but the lines are down. '
+          'You start listening to the voice messages and '
+          'get information about where your friends are headed, '
+          'panic strikes you though, as you hear your mothers voice. '
+          'She is locked inside her villa in the suburbs and your father '
+          'has not come home. She is alone and afraid and fears the '
+          'worst has happened to your father. ')
+    border()
+
+    knowledge.extend(['friend', 'family'])
+
+    if 'kill' in knowledge:
+        action = input('Press "a" to leave your apartment '
+                       'and go to your mother. '
+                       '"b" to leave your apartment and go to your friends. ')
+    else:
+        action = input('Press "a" to leave your apartment '
+                       'and go to your mother. '
+                       '"b" to leave your apartment and go to your friends. '
+                       '"c" to watch tv. ')
+    if action != ' ':
+        if action in ('a', 'b'):
+            choice_a()
+        elif action == 'c' and 'kill' not in knowledge:
+            watch_tv()
+        else:
+            print('invalid choice, try again')
+            watch_phone()
+    else:
+        print('invalid choice, try again')
+        watch_phone()
+
+
 def watch_tv():
     """
     If the user pressed "a" to watch tv on choice_b
     they will be brought here.
     """
+    border()
     print('You turn on the tv and you are immediatly greeted '
           'by the emergency broadcast system. '
           'It seems to be on repeat. '
@@ -363,17 +459,27 @@ def watch_tv():
           'You sit down on your couch as if all air has left your body. '
           'You try to process what the message is saying '
           'and start thinking of your options. ')
+    border()
 
-    action = input('Press "a" to check on your phone '
-                   '"b" to gather as much water as you can '
-                   '"c" to gather your supplies: ')
+    knowledge.append('kill')
+
+    if 'family' in knowledge:
+        action = input('Press "b" to gather as much water as you can. '
+                       '"c" to gather your supplies. '
+                       '"d" to leave: ')
+    else:
+        action = input('Press "a" to check on your phone '
+                       '"b" to gather as much water as you can '
+                       '"c" to gather your supplies: ')
     if action != ' ':
-        if action == 'a':
-            print('phone')
+        if action == 'a' and 'family' not in knowledge:
+            watch_phone()
         elif action == 'b':
             print('water')
         elif action == 'c':
             print('supplies')
+        elif action == 'd' and 'family' in knowledge:
+            leave()
         else:
             print('invalid choice, try again')
             watch_tv()
@@ -388,11 +494,14 @@ def name():
     """
     player_name = input('What is your name player?: ').strip()
     if not player_name and player_name != ' ':
+        border()
         print('Please enter a name')
+        border()
         name()
     else:
-        print(f'Welcome {player_name}, ')
-        print('You have been trapped in your apartment! '
+        border()
+        print(f'Welcome {player_name}, '
+              'You have been trapped in your apartment! '
               'Zombies are attacking your city. '
               'What do you do? ')
 
