@@ -322,11 +322,6 @@ def choice_b():
     If the user pressed "b" to stay on choice they will be brought here.
     """
     print('You have chosen to stay in your apartment. '
-          'Congratulations you survived the first night! '
-          'You have consumed some of your resources. '
-          'You wake up the next day in a haze, a part of you does not want to '
-          'believe what has happened. You look around the apartment '
-          'and try to decide what to do next. '
           'You can turn on the tv to see the news '
           'or you could look at your phone to see if anyone has called you.')
 
@@ -334,7 +329,8 @@ def choice_b():
                    '')
     if action != ' ':
         if action == 'a':
-            print('tv')
+            knowledge.append('kill')
+            watch_tv()
         elif action == 'b':
             print('phone')
         else:
@@ -343,6 +339,47 @@ def choice_b():
     else:
         print('invalid choice, try again')
         choice_b()
+
+
+def watch_tv():
+    """
+    If the user pressed "a" to watch tv on choice_b
+    they will be brought here.
+    """
+    print('You turn on the tv and you are immediatly greeted '
+          'by the emergency broadcast system. '
+          'It seems to be on repeat. '
+          '"If you are watching this, a great disaster has occured. '
+          'The dead have risen and are attacking the living! '
+          'Although we do not know why this is happening. We are '
+          'working on a solution. Stay in your homes until military forces '
+          'can reach you. Until then here are some guidelines. '
+          '1. Collect as much water as you can from the tap. '
+          '2. Ration your food, be prepared to wait for a long period. '
+          '3. If you have to fight them, damage the brain, '
+          'it is the only way to kill them. '
+          'If you are bitten you will turn into one of them. '
+          'Be careful, be safe and may god be with you." '
+          'You sit down on your couch as if all air has left your body. '
+          'You try to process what the message is saying '
+          'and start thinking of your options. ')
+
+    action = input('Press "a" to check on your phone '
+                   '"b" to gather as much water as you can '
+                   '"c" to gather your supplies: ')
+    if action != ' ':
+        if action == 'a':
+            print('phone')
+        elif action == 'b':
+            print('water')
+        elif action == 'c':
+            print('supplies')
+        else:
+            print('invalid choice, try again')
+            watch_tv()
+    else:
+        print('invalid choice, try again')
+        watch_tv()
 
 
 def name():
