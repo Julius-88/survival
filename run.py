@@ -43,8 +43,8 @@ def choice():
 
 def choice_a():
     """
-    If the user pressed "a" to leave apartment on choice they will be brought
-    here.
+    If the user pressed "a" to leave apartment on choice, watch_phone or
+    watch_tv they will be brought here.
     """
     border()
     print('Filled with adrenaline you have chosen to leave your apartment. '
@@ -55,6 +55,11 @@ def choice_a():
     if action != ' ':
         if action == 'a':
             weapon()
+        elif action == 'b' and 'water' in knowledge:
+            print('You gather all the water you can in a bag '
+                  'before you leave.')
+            bag.append('water')
+            leave()
         elif action == 'b':
             leave()
         else:
@@ -101,6 +106,11 @@ def knife():
     print('Armed with the biggest knife you could find '
           'you are ready to face what is outside. ')
     border()
+    if 'water' in knowledge:
+        print('You gather all the water you can in a bag '
+              'before you leave.')
+        bag.append('water')
+        leave()
     leave()
 
 
@@ -114,6 +124,11 @@ def bat():
     print('Armed with your trusty bat '
           'you are ready to face what is outside. ')
     border()
+    if 'water' in knowledge:
+        print('You gather all the water you can in a bag '
+              'before you leave.')
+        bag.append('water')
+        leave()
     leave()
 
 
@@ -475,7 +490,7 @@ def watch_tv():
         if action == 'a' and 'family' not in knowledge:
             watch_phone()
         elif action == 'b':
-            print('water')
+            water()
         elif action == 'c':
             print('supplies')
         elif action == 'd' and 'family' in knowledge:
@@ -486,6 +501,44 @@ def watch_tv():
     else:
         print('invalid choice, try again')
         watch_tv()
+
+
+def water():
+    """
+    If user pressed "b" to gather water in watch_tv
+    they will be brought here.
+    """
+    border()
+    print('You search your apartment for any '
+          'containers you can find.\n '
+          'Once you have found everything you had '
+          'you start filling them with tap water. '
+          'Once you are done, you look around thinking of what to do next. ')
+    border()
+    knowledge.append('water')
+
+    if 'kill' in knowledge and 'family' not in knowledge:
+        action = input('Press "a" to check on your phone '
+                       '"c" to gather your supplies: ')
+    else:
+        action = input('Press "d" to leave '
+                       '"c" to gather your supplies: ')
+    if action != ' ':
+        if action == 'a' and 'family' not in knowledge:
+            watch_phone()
+        elif action == 'c' and 'supplies' not in knowledge:
+            print('supplies')
+        elif action == 'd' and 'family' in knowledge:
+            print('You gather all the water you can and put it in a bag. '
+                  'before you leave. ')
+            bag.append('water')
+            leave()
+        else:
+            print('invalid choice, try again')
+            water()
+    else:
+        print('invalid choice, try again')
+        water()
 
 
 def name():
