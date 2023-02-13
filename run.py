@@ -4,6 +4,7 @@ YOU MUST SURVIVE!
 """
 weapons = []
 knowledge = []
+bag = []
 
 
 def choice():
@@ -65,7 +66,8 @@ def weapon():
             weapons.append('knife')
             knife()
         elif action == 'b':
-            print('bat')
+            weapons.append('bat')
+            bat()
         else:
             print('invalid choice, try again')
             weapon()
@@ -80,6 +82,16 @@ def knife():
     they will be brought here.
     """
     print('Armed with the biggest knife you could find '
+          'you are ready to face what is outside. ')
+    leave()
+
+
+def bat():
+    """
+    If the user pressed "b" to take baseball bat in weapon
+    they will be brought here.
+    """
+    print('Armed with your trusty bat '
           'you are ready to face what is outside. ')
     leave()
 
@@ -213,6 +225,36 @@ def attack():
               'Standing in disbelief of what you have done, you feel '
               'that you are now ready to face the grim reality of the world. '
               'Congratulations you survived chapter one! ')
+    elif 'bat' in weapons:
+        weapons.pop()
+        print('You ready your bat and yell at the zombies. '
+              'They rise up and start approaching you. '
+              'You swing your bat at the closest one hitting its jaw. '
+              'The zombie staggers a bit but does not seem to '
+              'register the blow and keeps approaching. '
+              'You back away and try to swing again, hitting '
+              'one of the zombies on the arm. As you do so '
+              'you slip on a pool of blood and fall down. '
+              'The zombie closest to you grabs your feet '
+              'and tries to take a bite. As you try to kick it '
+              'off of you, the other zombie has closed in on you '
+              'and starts to eat your arm. '
+              'You have died! GAME OVER! ')
+        name()
+        choice()
+    elif 'bat' in weapons and 'tv' in knowledge:
+        print('As you prepare to attack the zombies you'
+              'remember what they said on the news. '
+              'You yell at the zombies and start to approach you. '
+              'As the first one comes close enough you aim for the head. '
+              'A loud cracking sound comes from the zombie as it falls down. '
+              'You quickly move towards the other one and hit it on its head. '
+              'It too falls down and you start to repeatedly bash its head '
+              'until it is cracked. You then move to the first zombie to '
+              'finish the job. '
+              'You take a deep breath, covered in blood and knowledge '
+              'you are ready to face what awaits you outside. '
+              'Congratulations you survived chapter one! ')
     else:
         print('You engange the zombies in hand to hand combat '
               'it is a futile attempt as they quickly start biting you. '
@@ -232,13 +274,31 @@ def stairs_up():
           'Panicked you go as fast as you can and eventually reach the '
           'doors going to the roof terrace. '
           'You close the door behind you but there is no locking mechanism. ')
-
-    print('All you can do is hold the opposite end of the door. '
-          'The zombies overpower you and you have nowhere to go. '
-          'You decide its better to jump to your death than to be '
-          'eaten alive. You have died! GAME OVER! ')
-    name()
-    choice()
+    if 'bat' in weapons:
+        weapons.pop()
+        print('You quickly use your bat and put it in the door handle '
+              'thus preventing it from being open. '
+              'You are now trapped on the roof, with no supplies '
+              'or a way out. You starve to death. '
+              'You have died! GAME OVER! ')
+        name()
+        choice()
+    elif 'bat' in weapons and 'supplies' in bag:
+        weapons.pop()
+        bag.pop()
+        print('You quickly use your bat and put it in the door handle '
+              'thus preventing it from being open. '
+              'With no way out you have no choice but to wait '
+              'for rescue. You ration your supplies and '
+              'manage to live long enough for a helicopter to spot you. '
+              'Congratulations you survived chapter one! ')
+    else:
+        print('All you can do is hold the opposite end of the door. '
+              'The zombies overpower you and you have nowhere to go. '
+              'You decide its better to jump to your death than to be '
+              'eaten alive. You have died! GAME OVER! ')
+        name()
+        choice()
 
 
 def elevator():
