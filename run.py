@@ -41,7 +41,7 @@ def border():
     print('\n')
 
 
-def choice():
+def start_game():
     """
     Presents user with their first choice of leaving the apartment or staying.
     If they press "a" they will leave apartment, if they press "b"
@@ -60,10 +60,10 @@ def choice():
             choice_b()
         else:
             print('invalid choice, try again')
-            choice()
+            start_game()
     else:
         print('invalid choice, try again')
-        choice()
+        start_game()
 
 
 def choice_a():
@@ -196,7 +196,7 @@ def stairs():
                   'overwhelmed.\nYou have died! GAME OVER! ')
             border()
             name()
-            choice()
+            start_game()
         elif action == 'd':
             elevator()
         else:
@@ -262,7 +262,7 @@ def run():
           'You have died! GAME OVER!')
     border()
     name()
-    choice()
+    start_game()
 
 
 def attack():
@@ -305,7 +305,7 @@ def attack():
               'They overwhelm you. You have died! GAME OVER!')
         border()
         name()
-        choice()
+        start_game()
     elif 'bat' in weapons:
         weapons.pop()
         border()
@@ -324,7 +324,7 @@ def attack():
               'You have died! GAME OVER!')
         border()
         name()
-        choice()
+        start_game()
     else:
         border()
         print('You engange the zombies in hand to hand combat '
@@ -332,7 +332,7 @@ def attack():
               'You have died! GAME OVER!')
         border()
         name()
-        choice()
+        start_game()
 
 
 def stairs_up():
@@ -369,7 +369,7 @@ def stairs_up():
               'You have died! GAME OVER!')
         border()
         name()
-        choice()
+        start_game()
     else:
         border()
         print('All you can do is hold the opposite end of the door.\n'
@@ -378,7 +378,7 @@ def stairs_up():
               'eaten alive.\nYou have died! GAME OVER!')
         border()
         name()
-        choice()
+        start_game()
 
 
 def elevator():
@@ -395,7 +395,7 @@ def elevator():
           'You have been eaten! GAME OVER!')
     border()
     name()
-    choice()
+    start_game()
 
 
 def choice_b():
@@ -666,4 +666,4 @@ def name():
 name()
 
 
-choice()
+start_game()
