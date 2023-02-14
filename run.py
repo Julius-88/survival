@@ -2,14 +2,34 @@
 This is a survival game taking place in a zombie outbreak
 YOU MUST SURVIVE!
 """
+import sys
 weapons = []
 knowledge = []
 bag = []
-HAS_FAMILY_SUPPLIES = 'family' in knowledge and 'supplies' in knowledge
+
+
+def check_knowledge():
+    """
+    Checks to see if the player is aware of both
+    water and supply
+    """
+    return 'water' in knowledge and 'supplies' in knowledge
 
 
 def check_supplies():
-    return 'water' in knowledge and 'supplies' in knowledge
+    """
+    Checks to see if the player is aware of both
+    water and supply
+    """
+    return 'water' in bag and 'supplies' in bag
+
+
+def check_knowledge_resource():
+    """
+    Checks to see if the player is aware of either
+    water or supply
+    """
+    return 'water' in knowledge or 'supplies' in knowledge
 
 
 def border():
@@ -117,12 +137,16 @@ def knife():
     border()
     print('Armed with the biggest knife you could find '
           'you are ready to face what is outside. ')
-    border()
-    if 'water' in knowledge:
+    if check_supplies():
+        leave()
+    elif 'water' in knowledge:
         print('You gather all the water you can in a bag '
               'before you leave.')
         bag.append('water')
         leave()
+    elif 'supplies' in knowledge:
+        print('You gather all the supplies you can in a bag '
+              'before you leave ')
     leave()
 
 
@@ -135,12 +159,16 @@ def bat():
     border()
     print('Armed with your trusty bat '
           'you are ready to face what is outside. ')
-    border()
-    if 'water' in knowledge:
+    if check_supplies():
+        leave()
+    elif 'water' in knowledge:
         print('You gather all the water you can in a bag '
               'before you leave.')
         bag.append('water')
         leave()
+    elif 'supplies' in knowledge:
+        print('You gather all the supplies you can in a bag '
+              'before you leave ')
     leave()
 
 
@@ -192,7 +220,16 @@ def stairs():
         elif action == 'b':
             stairs_up()
         elif action == 'c':
-            choice_b()
+            border()
+            print('Terrified of the outside world, '
+                  'you decide to go back to your apartment. '
+                  'You quickly run out of resources and decide to '
+                  'try and escape but it is to late. '
+                  'The zombies fill the hallways and you are quickly '
+                  'overwhelmed. You have died! GAME OVER! ')
+            border()
+            name()
+            choice()
         elif action == 'd':
             elevator()
         else:
@@ -275,24 +312,24 @@ def attack():
               'head. Killing it in one blow! You quickly pull out '
               'your knife and stab the other one right through its eyes. '
               'Standing in disbelief of what you have done, you feel '
-              'that you are now ready to face the grim reality of the world. '
-              'Congratulations you survived chapter one! ')
+              'that you are now ready to face the grim reality of the world. ')
         border()
+        sys.exit('Congratulations you survived chapter one!')
     elif 'bat' in weapons and 'kill' in knowledge:
         border()
         print('As you prepare to attack the zombies you '
               'remember what they said on the news. '
-              'You yell at the zombies and start to approach you. '
-              'As the first one comes close enough you aim for the head. '
+              'You yell at the zombies and they start to approach you. '
+              'As the first one comes close enough, you aim for the head. '
               'A loud cracking sound comes from the zombie as it falls down. '
               'You quickly move towards the other one and hit it on its head. '
               'It too falls down and you start to repeatedly bash its head '
               'until it is cracked. You then move to the first zombie to '
               'finish the job. '
               'You take a deep breath, covered in blood and knowledge '
-              'you are ready to face what awaits you outside. '
-              'Congratulations you survived chapter one! ')
+              'you are ready to face what awaits you outside.')
         border()
+        sys.exit('Congratulations you survived chapter one!')
     elif 'knife' in weapons:
         weapons.pop()
         border()
@@ -345,8 +382,19 @@ def stairs_up():
           'Panicked you go as fast as you can and eventually reach the '
           'doors going to the roof terrace. '
           'You close the door behind you but there is no locking mechanism. ')
-    border()
-    if 'bat' in weapons:
+
+    if 'bat' in weapons and check_supplies():
+        weapons.pop()
+        bag.clear()
+        border()
+        print('You quickly use your bat and put it in the door handle '
+              'thus preventing it from being open. '
+              'With no way out you have no choice but to wait '
+              'for rescue. You ration your supplies and '
+              'manage to live long enough for a helicopter to spot you. ')
+        border()
+        sys.exit('Congratulations you survived chapter one!')
+    elif 'bat' in weapons:
         weapons.pop()
         border()
         print('You quickly use your bat and put it in the door handle '
@@ -357,17 +405,6 @@ def stairs_up():
         border()
         name()
         choice()
-    elif 'bat' in weapons and 'supplies' in bag:
-        weapons.pop()
-        bag.clear()
-        border()
-        print('You quickly use your bat and put it in the door handle '
-              'thus preventing it from being open. '
-              'With no way out you have no choice but to wait '
-              'for rescue. You ration your supplies and '
-              'manage to live long enough for a helicopter to spot you. '
-              'Congratulations you survived chapter one! ')
-        border()
     else:
         border()
         print('All you can do is hold the opposite end of the door. '
@@ -441,28 +478,40 @@ def watch_phone():
 
     knowledge.extend(['friend', 'family'])
 
-    if 'kill' in knowledge:
-        action = input('Press "a" to leave your apartment '
-                       'and go to your mother. '
-                       '"b" to leave your apartment and go to your friends. ')
-    else:
+    if not check_knowledge():
         action = input('Press "a" to leave your apartment '
                        'and go to your mother. '
                        '"b" to leave your apartment and go to your friends. '
                        '"c" to watch tv. ')
+    elif 'kill' in knowledge and not check_knowledge_resource():
+        action = input('Press "a" to leave your apartment '
+                       'and go to your mother. '
+                       '"b" to leave your apartment and go to your friends. '
+                       '"e" to gather your supplies. '
+                       '"d" to gather your water: ')
+    else:
+        action = input('Press "a" to leave your apartment '
+                       'and go to your mother. '
+                       '"b" to leave your apartment and go to your friends. ')
     if action != ' ':
-        if action in ('a', 'b') and check_supplies():
+        if action in ('a', 'b') and check_knowledge():
             border()
             print('You gather all the water and supplies you can '
-                  'and put it in a bag. '
+                  'and put it in a bag '
                   'before you leave. ')
             bag.append('supplies')
             bag.append('water')
             choice_a()
-        elif action in ('a', 'b'):
+        elif action in ('a', 'b') and 'kill' in knowledge:
             choice_a()
+        elif action in ('a', 'b'):
+            leave()
         elif action == 'c' and 'kill' not in knowledge:
             watch_tv()
+        elif action == 'd' and 'water' not in knowledge:
+            water()
+        elif action == 'e' and 'supplies' not in knowledge:
+            supplies()
         else:
             print('invalid choice, try again')
             watch_phone()
@@ -533,15 +582,21 @@ def water():
     border()
     print('You search your apartment for any '
           'containers you can find.\n '
-          'Once you have found everything you had '
+          'Once you have found everything you had, '
           'you start filling them with tap water. '
           'Once you are done, you look around thinking of what to do next. ')
     border()
     knowledge.append('water')
 
-    if 'family' not in knowledge:
+    if 'family' not in knowledge and 'supplies' not in knowledge:
         action = input('Press "a" to check on your phone '
                        '"c" to gather your supplies: ')
+    elif 'family' not in knowledge:
+        action = input('Press "a" to check on your phone: ')
+    elif check_knowledge():
+        action = input('Press "d" to leave your apartment '
+                       'and go to your mother. '
+                       '"e" to leave your apartment and go to your friends. ')
     else:
         action = input('Press "d" to leave your apartment '
                        'and go to your mother. '
@@ -552,19 +607,21 @@ def water():
             watch_phone()
         elif action == 'c' and 'supplies' not in knowledge:
             supplies()
-        elif action in ('d', 'e') and HAS_FAMILY_SUPPLIES:
+        elif action in ('d', 'e') and check_knowledge():
+            border()
             print('You gather all the water and supplies you can '
-                  'and put it in a bag. '
+                  'and put it in a bag '
                   'before you leave. ')
             bag.append('supplies')
             bag.append('water')
-            leave()
+            choice_a()
         elif action in ('d', 'e'):
+            border()
             print('You gather all the water you can '
-                  'and put it in a bag. '
+                  'and put it in a bag '
                   'before you leave. ')
             bag.append('water')
-            leave()
+            choice_a()
         else:
             print('invalid choice, try again')
             water()
@@ -581,41 +638,46 @@ def supplies():
     """
     border()
     print('You search your apartment for any '
-          'food you can find, and gather it all in one place.\n '
+          'supplies that can be of use. '
+          'You gather it all in one place.\n '
           'Once you are done, you look around thinking of what to do next. ')
     border()
     knowledge.append('supplies')
 
-    if 'family' not in knowledge:
-        action = input('Press "a" to check on your phone ')
-#                       '"c" to gather your water: ')
-    elif 'water' in knowledge and 'family' in knowledge:
+    if 'family' not in knowledge and 'water' not in knowledge:
+        action = input('Press "a" to check on your phone '
+                       '"c" to gather your water: ')
+    elif 'family' not in knowledge:
+        action = input('Press "a" to check on your phone: ')
+    elif check_knowledge():
         action = input('Press "d" to leave your apartment '
                        'and go to your mother. '
-                       '"e" to leave your apartment and go to your friends. ')
+                       '"e" to leave your apartment and go to your friends: ')
     else:
         action = input('Press "d" to leave your apartment '
                        'and go to your mother. '
                        '"e" to leave your apartment and go to your friends. '
-                       '"c" to gather water: ')
+                       '"c" to gather your water: ')
     if action != ' ':
         if action == 'a' and 'family' not in knowledge:
             watch_phone()
-        elif action in ('d', 'e') and HAS_FAMILY_SUPPLIES:
+        elif action in ('d', 'e') and check_knowledge():
+            border()
             print('You gather all the supplies and water '
-                  'you can and put it in a bag. '
+                  'you can and put it in a bag '
                   'before you leave. ')
             bag.append('supplies')
             bag.append('water')
-            leave()
+            choice_a()
         elif action == 'c' and 'water' not in knowledge:
             water()
         elif action in ('d', 'e'):
+            border()
             print('You gather all the supplies you can '
                   'and put it in a bag. '
                   'before you leave. ')
             bag.append('supplies')
-            leave()
+            choice_a()
         else:
             print('invalid choice, try again')
             supplies()
