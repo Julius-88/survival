@@ -27,8 +27,13 @@ Depending on your previous and future choices you will either meet a grim end or
 - I would like to add a high score for each player. I was thinking of implementing a point system for each choice you make and then adding it all up together with the name given.
 
 # Data Model
-I decided to create a text-based adventure/horror game.
-The choices the player makes are temporarily saved until the end of the game. Each new iteration resets the game completely. There are several different endings. I am using the print method to guide the player and create the atmosphere.
+I decided to create a text-based adventure/horror game in Python.
+
+The choices the player makes are temporarily saved until the end of the game. 
+
+I am using variables and lists to store the information, such as the player's name, weapons, supplies and knowledge. Each new iteration resets the game completely. 
+
+There are several different endings. I am using the print method to guide the player and create the atmosphere and conditional statements to make the choices.
 
 # Testing
 - I have tested each scenario in my terminal

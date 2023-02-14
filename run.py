@@ -56,9 +56,9 @@ def start_game():
     action = input('Press "a" to leave your apartment or "b" to stay: ')
     if action != ' ':
         if action == 'a':
-            choice_a()
+            leave_apartment()
         elif action == 'b':
-            choice_b()
+            apartment()
         else:
             print('invalid choice, try again')
             start_game()
@@ -67,7 +67,7 @@ def start_game():
         start_game()
 
 
-def choice_a():
+def leave_apartment():
     """
     Here the player can choose if they
     wish to search for a weapon before they
@@ -84,13 +84,13 @@ def choice_a():
         if action == 'a':
             weapon()
         elif action == 'b':
-            leave()
+            panic()
         else:
             print('invalid choice, try again')
-            choice_a()
+            leave_apartment()
     else:
         print('invalid choice, try again')
-        choice_a()
+        leave_apartment()
 
 
 def weapon():
@@ -126,7 +126,7 @@ def knife():
     border()
     print('Armed with the biggest knife you could find '
           'you are ready to face what is outside. ')
-    leave()
+    panic()
 
 
 def bat():
@@ -137,10 +137,10 @@ def bat():
     border()
     print('Armed with your trusty bat '
           'you are ready to face what is outside. ')
-    leave()
+    panic()
 
 
-def leave():
+def panic():
     """
     Here the player can choose to leave
     immediately.
@@ -162,10 +162,10 @@ def leave():
             elevator()
         else:
             print('invalid choice, try again')
-            leave()
+            panic()
     else:
         print('invalid choice, try again')
-        leave()
+        panic()
 
 
 def stairs():
@@ -399,7 +399,7 @@ def elevator():
     start_game()
 
 
-def choice_b():
+def apartment():
     """
     Here the player can choose what to do in their apartment.
     """
@@ -418,10 +418,10 @@ def choice_b():
             watch_phone()
         else:
             print('invalid choice, try again')
-            choice_b()
+            apartment()
     else:
         print('invalid choice, try again')
-        choice_b()
+        apartment()
 
 
 def watch_phone():
@@ -469,9 +469,9 @@ def watch_phone():
                   'before you leave.')
             bag.append('supplies')
             bag.append('water')
-            choice_a()
+            leave_apartment()
         elif action in ('a', 'b'):
-            leave()
+            panic()
         elif action == 'c' and 'kill' not in knowledge:
             watch_tv()
         elif action == 'd' and 'water' not in knowledge:
@@ -528,7 +528,7 @@ def watch_tv():
         elif action == 'b':
             supplies()
         elif action in ('c', 'd') and 'family' in knowledge:
-            leave()
+            panic()
         else:
             print('invalid choice, try again')
             watch_tv()
@@ -576,14 +576,14 @@ def water():
                   'before you leave. ')
             bag.append('supplies')
             bag.append('water')
-            choice_a()
+            leave_apartment()
         elif action in ('d', 'e'):
             border()
             print('You gather all the water you can '
                   'and put it in a bag '
                   'before you leave. ')
             bag.append('water')
-            choice_a()
+            leave_apartment()
         else:
             print('invalid choice, try again')
             water()
@@ -628,7 +628,7 @@ def supplies():
                   'before you leave. ')
             bag.append('supplies')
             bag.append('water')
-            choice_a()
+            leave_apartment()
         elif action == 'c' and 'water' not in knowledge:
             water()
         elif action in ('d', 'e'):
@@ -637,7 +637,7 @@ def supplies():
                   'and put it in a bag '
                   'before you leave. ')
             bag.append('supplies')
-            choice_a()
+            leave_apartment()
         else:
             print('invalid choice, try again')
             supplies()
