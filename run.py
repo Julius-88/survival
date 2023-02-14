@@ -1,5 +1,5 @@
 """
-This is a survival game taking place in a zombie outbreak
+This is a text based survival game taking place in a zombie outbreak
 YOU MUST SURVIVE!
 """
 import sys
@@ -18,7 +18,7 @@ def check_knowledge():
 
 def check_supplies():
     """
-    Checks to see if the player is aware of both
+    Checks to see if the player has both
     water and supply
     """
     return 'water' in bag and 'supplies' in bag
@@ -34,7 +34,7 @@ def check_knowledge_resource():
 
 def border():
     """
-    Creates a border of * so it is easier to see the game text.
+    Creates a border of * and spacing so it is easier to see the game text.
     """
     print('\n')
     print('*' * 20)
@@ -68,14 +68,16 @@ def choice():
 
 def choice_a():
     """
-    If the user pressed "a" to leave apartment on choice, watch_phone or
-    watch_tv they will be brought here.
+    Here the player can choose if they
+    wish to search for a weapon before they
+    leave
     """
     border()
     print('Filled with adrenaline you have chosen to leave your apartment. '
           'You suddenly realize it might be a good idea to have some '
           'protection. Will you look for a weapon before you leave?')
     border()
+
     action = input('Press "a" to look for a weapon or "b" to leave: ')
     if action != ' ':
         if action == 'a':
@@ -104,8 +106,7 @@ def choice_a():
 
 def weapon():
     """
-    If the user pressed "a" to look for a weapon on choice_a
-    they will be brought here.
+    Here the player can choose a weapon.
     """
     border()
     print('You ransack your apartment but all you can find are kitchen knives '
@@ -130,13 +131,13 @@ def weapon():
 
 def knife():
     """
-    If the user pressed "a" to take knife in weapon
-    they will be brought here.
+    Here the player can pick up a knife.
     """
     weapons.append('knife')
     border()
     print('Armed with the biggest knife you could find '
           'you are ready to face what is outside. ')
+
     if check_supplies():
         leave()
     elif 'water' in knowledge:
@@ -152,13 +153,13 @@ def knife():
 
 def bat():
     """
-    If the user pressed "b" to take baseball bat in weapon
-    they will be brought here.
+    Here the player can pick up a bat.
     """
     weapons.append('bat')
     border()
     print('Armed with your trusty bat '
           'you are ready to face what is outside. ')
+
     if check_supplies():
         leave()
     elif 'water' in knowledge:
@@ -174,8 +175,8 @@ def bat():
 
 def leave():
     """
-    If the user pressed "b" to leave apartment in choice_a
-    they will be brought here.
+    Here the player can choose to leave
+    immediately.
     """
     border()
     print('You decide that you have no time to waste. '
@@ -202,8 +203,8 @@ def leave():
 
 def stairs():
     """
-    If the user pressed "a" to take stairs in leave
-    they will be brought here.
+    Here the player gets to choose
+    which direction they wish to go in the staircase.
     """
     border()
     print('As you are running down the stairs you can hear strange growling '
@@ -242,8 +243,8 @@ def stairs():
 
 def stairs_down():
     """
-    If the user pressed "a" to take stairs down in stairs
-    they will be brought here.
+    Here the player can choose what to do when
+    they go down the staircase.
     """
     border()
     print('As you continue down the stairs you see two zombies '
@@ -270,8 +271,7 @@ def stairs_down():
 
 def sneak():
     """
-    If the user pressed "a" to sneak in stairs_down
-    they will be brought here.
+    Here the player can choose to sneak past the zombies.
     """
     border()
     print('You successfully sneak past the zombies and avoid '
@@ -284,8 +284,7 @@ def sneak():
 
 def run():
     """
-    If the user pressed "b" to run in stairs_down
-    they will be brought here.
+    Here the player can choose to run past the zombies.
     """
     border()
     print('As you sprint towards the exit '
@@ -302,8 +301,7 @@ def run():
 
 def attack():
     """
-    If the user pressed "c" to attack them in stairs_down
-    they will be brought here.
+    Here the player can choose to attack the zombies.
     """
     if 'knife' in weapons and 'kill' in knowledge:
         border()
@@ -372,8 +370,8 @@ def attack():
 
 def stairs_up():
     """
-    If the user pressed "b" to go up the stairs in stairs
-    they will be brought here.
+    Here the player goes upstairs and can
+    see the consequences of their choices.
     """
     border()
     print('You decide to take your chances going up the stairs. '
@@ -418,8 +416,7 @@ def stairs_up():
 
 def elevator():
     """
-    If the user pressed "b" to take the elevator in leave
-    or "d" in stairs they will be brought here.
+    Here the player can see the consequences of their choices.
     """
     border()
     print('You decide to take the elevator and continuously '
@@ -436,7 +433,7 @@ def elevator():
 
 def choice_b():
     """
-    If the user pressed "b" to stay on choice they will be brought here.
+    Here the player can choose what to do in their apartment.
     """
     border()
     print('You have chosen to stay in your apartment. '
@@ -461,8 +458,8 @@ def choice_b():
 
 def watch_phone():
     """
-    If the user pressed "b" to watch phone on choice_b
-    they will be brought here.
+    Here the player uses his phone and has to decide what to
+    do with the new information he has been given.
     """
     border()
     print('You open your phone and see that you have several missed calls '
@@ -478,21 +475,24 @@ def watch_phone():
 
     knowledge.extend(['friend', 'family'])
 
-    if not check_knowledge():
+    if 'kill' in knowledge and check_knowledge_resource():
+        if 'water' in knowledge:
+            action = input('Press "a" to leave your apartment '
+                           'and go to your mother. '
+                           '"b" to leave your apartment and go to your '
+                           'friends. '
+                           '"e" to gather your supplies. ')
+        else:
+            action = input('Press "a" to leave your apartment '
+                           'and go to your mother. '
+                           '"b" to leave your apartment and go to your '
+                           'friends. '
+                           '"d" to gather your water: ')
+    else:
         action = input('Press "a" to leave your apartment '
                        'and go to your mother. '
                        '"b" to leave your apartment and go to your friends. '
                        '"c" to watch tv. ')
-    elif 'kill' in knowledge and not check_knowledge_resource():
-        action = input('Press "a" to leave your apartment '
-                       'and go to your mother. '
-                       '"b" to leave your apartment and go to your friends. '
-                       '"e" to gather your supplies. '
-                       '"d" to gather your water: ')
-    else:
-        action = input('Press "a" to leave your apartment '
-                       'and go to your mother. '
-                       '"b" to leave your apartment and go to your friends. ')
     if action != ' ':
         if action in ('a', 'b') and check_knowledge():
             border()
@@ -501,8 +501,6 @@ def watch_phone():
                   'before you leave. ')
             bag.append('supplies')
             bag.append('water')
-            choice_a()
-        elif action in ('a', 'b') and 'kill' in knowledge:
             choice_a()
         elif action in ('a', 'b'):
             leave()
@@ -522,8 +520,8 @@ def watch_phone():
 
 def watch_tv():
     """
-    If the user pressed "a" to watch tv on choice_b
-    they will be brought here.
+    Here the player gains insight on what is going on
+    in the world. They must now decide how to proceed.
     """
     border()
     print('You turn on the tv and you are immediatly greeted '
@@ -576,8 +574,7 @@ def watch_tv():
 
 def water():
     """
-    If user pressed "b" to gather water in watch_tv
-    they will be brought here.
+    Here the player gathers as much water as possible for their survival.
     """
     border()
     print('You search your apartment for any '
@@ -632,9 +629,7 @@ def water():
 
 def supplies():
     """
-    If user pressed "c" to gather supplies in watch_tv
-    or pressed "c" in water
-    they will be brought here.
+    Here the player gathers all the supplies they have in their apartment.
     """
     border()
     print('You search your apartment for any '
