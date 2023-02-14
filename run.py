@@ -1,5 +1,5 @@
 """
-This is a text based survival game taking place in a zombie outbreak
+This is a text-based survival game taking place in a zombie outbreak
 YOU MUST SURVIVE!
 """
 import sys
@@ -43,8 +43,9 @@ def border():
 
 def start_game():
     """
-    Presents user with their first choice of leaving the apartment or staying.
-    If they press "a" they will leave apartment, if they press "b"
+    Presents the user with their first choice of leaving the apartment
+    or staying.
+    If they press "a" they will leave the apartment, if they press "b"
     they will stay.
     """
     weapons.clear()
@@ -99,7 +100,7 @@ def weapon():
     border()
     print('You ransack your apartment but all you can find are kitchen knives '
           'and an old baseball bat.\n'
-          'You dont have any way of putting the knife securly on you '
+          'You dont have any way of putting the knife securely on you '
           'and so you must make a choice. ')
     border()
 
@@ -191,7 +192,7 @@ def stairs():
             print('Terrified of the outside world, '
                   'you decide to go back to your apartment.\n'
                   'You quickly run out of resources and decide to '
-                  'try and escape but it is to late.\n'
+                  'try and escape but it is too late.\n'
                   'The zombies fill the hallways and you are quickly '
                   'overwhelmed.\nYou have died! GAME OVER! ')
             border()
@@ -243,7 +244,7 @@ def sneak():
     print('You successfully sneak past the zombies and avoid '
           'stepping into any pool of blood.\nAs you open the door '
           'you are greeted by a city in complete chaos.\n'
-          'You know the odds are against you but atleast you got a chance!\n'
+          'You know the odds are against you but at least you got a chance!\n'
           'Congratulations you survived chapter one!')
     border()
 
@@ -285,10 +286,10 @@ def attack():
               'remember what they said on the news.\n'
               'You yell at the zombies and they start to approach you.\n'
               'As the first one comes close enough, you aim for the head.\n'
-              'A loud cracking sound comes from the zombie as it falls down.\n'
+              'A loud cracking sound comes from the zombie as it falls.\n'
               'You quickly move towards the other one and hit it on its'
               'head.\n'
-              'It too falls down and you start to repeatedly bash its head '
+              'It too falls and you start to repeatedly bash its head '
               'until it is cracked.\nYou then move to the first zombie to '
               'finish the job.\n'
               'You take a deep breath, covered in blood and knowledge '
@@ -300,7 +301,7 @@ def attack():
         border()
         print('You pull out your knife and stab the closest zombie.\n'
               'It does not seem to affect them.\n'
-              'They both rise up and start attacking you as you '
+              'They both rise and start attacking you as you '
               'repeatedly stab them, fighting for your life.\n'
               'They overwhelm you. You have died! GAME OVER!')
         border()
@@ -310,7 +311,7 @@ def attack():
         weapons.pop()
         border()
         print('You ready your bat and yell at the zombies.\n'
-              'They rise up and start approaching you.\n'
+              'They rise and start approaching you.\n'
               'You swing your bat at the closest one hitting its jaw.\n'
               'The zombie staggers a bit but does not seem to '
               'register the blow and keeps approaching.\n'
@@ -327,7 +328,7 @@ def attack():
         start_game()
     else:
         border()
-        print('You engange the zombies in hand to hand combat '
+        print('You engage the zombies in hand to hand combat '
               'it is a futile attempt as they quickly start biting you.\n'
               'You have died! GAME OVER!')
         border()
@@ -389,7 +390,7 @@ def elevator():
     print('You decide to take the elevator and continuously '
           'press the button to make it come faster as you '
           'look around for any danger.\n'
-          'As the familiar sound plings you look infront of '
+          'As the familiar sound plings you look in front of '
           'you only to find to your horror, several zombies '
           'inside!\nThey grab you before you can react.\n'
           'You have been eaten! GAME OVER!')
@@ -491,20 +492,20 @@ def watch_tv():
     in the world. They must now decide how to proceed.
     """
     border()
-    print('You turn on the tv and you are immediatly greeted '
+    print('You turn on the tv and you are immediately greeted '
           'by the emergency broadcast system.\n'
           'It seems to be on repeat.\n'
-          '"If you are watching this, a great disaster has occured.\n'
+          '"If you are watching this, a great disaster has occurred.\n'
           'The dead have risen and are attacking the living!\n'
           'Although we do not know why this is happening.\nWe are '
           'working on a solution.\nStay in your homes until military forces '
           'can reach you.\nUntil then, here are some guidelines.\n'
           '1. Collect as much water as you can from the tap.\n'
-          '2. Ration your food, be prepared to wait for a long period.\n'
+          '2. Ration your food, and be prepared to wait for a long period.\n'
           '3. If you have to fight them, damage the brain, '
           'it is the only way to kill them.\n'
           'If you are bitten you will turn into one of them.\n'
-          'Be careful, be safe and may god be with you."\n'
+          'Be careful, be safe, and may god be with you."\n'
           'You sit down on your couch as if all air has left your body.\n'
           'You try to process what the message is saying '
           'and start thinking of your options.')
@@ -647,7 +648,7 @@ def supplies():
 
 def name():
     """
-    checks to see if player has entered a name
+    checks to see if the player has entered a name
     """
     player_name = input('What is your name player?: ').strip()
     if not player_name and player_name != ' ':
