@@ -443,7 +443,11 @@ def watch_phone():
 
     knowledge.extend(['friend', 'family'])
 
-    if check_knowledge_resource():
+    if check_knowledge():
+        action = input('Press "a" to leave your apartment '
+                       'and go to your mother. '
+                       '"b" to leave your apartment and go to your friends. ')
+    elif check_knowledge_resource():
         if 'water' in knowledge:
             action = input('Press "a" to leave your apartment '
                            'and go to your mother. '
