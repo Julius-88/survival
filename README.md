@@ -1,6 +1,6 @@
 # Survival
-Survival is a Python terminal game, which runs in the Code Institute mock terminal on Heroku
-[Click here to play!](https://survival.herokuapp.com/)
+Survival is a Python terminal game, which runs in the Code Institute mock terminal on Replit
+[Click here to play!](https://survival--Julius88.replit.app)
 
 # How to play
 ![Game Preview](./documentation/game-preview.PNG)
@@ -53,16 +53,10 @@ I created some variables and additional functions at the top to combat this. I a
 ![PEP8 Python Validator](./documentation/python-linter.PNG)
 
 # Deployment
-Steps for deployment:
-- Fork or clone this repository
-- Create an account on Heroku
-- Click on "Create new app" and choose the app name and which region you live in
-- Go to the "Settings" tab and scroll down to "Add buildpack"
-- Choose Python and Node.js in that order. Python must be above Node.js for Code Institutes template to work.
-- Now go to the "Deploy" tab and choose to connect to GitHub and confirm it.
-- Search for the repository name and click search. Then click on connect.
-- Once done scroll down and click on "Deploy Branch"
-- Once it is done a button will become visible called "View"
+Steps for deployment on Replit
+- Log into Replit account
+- Import code
+- Click on publish project
 
 # Credits
 - Code Institute for the deployment terminal
