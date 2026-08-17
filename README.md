@@ -1,6 +1,6 @@
 # Survival
 Survival is a Python terminal game, which runs in the Code Institute mock terminal on Replit
-[Click here to play!](https://survival--Julius88.replit.app)
+[Click here to play!](https://survival-mfvn.onrender.com/)
 
 # How to play
 ![Game Preview](./documentation/game-preview.PNG)
@@ -51,12 +51,6 @@ I created some variables and additional functions at the top to combat this. I a
 ### Validator Testing
 - [PEP8 Python Validator](https://pep8ci.herokuapp.com/) 
 ![PEP8 Python Validator](./documentation/python-linter.PNG)
-
-# Deployment
-Steps for deployment on Replit
-- Log into Replit account
-- Import code
-- Click on publish project
 
 # Credits
 - Code Institute for the deployment terminal
